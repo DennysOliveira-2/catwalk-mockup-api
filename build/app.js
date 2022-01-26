@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const routes_1 = require("./routes");
-require("dotenv/config");
 const app = (0, express_1.default)();
 const APP_PORT = process.env.PORT;
 app.use((0, cors_1.default)());
