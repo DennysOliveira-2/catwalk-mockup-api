@@ -1,24 +1,21 @@
+// Developer Environment Only
+import "dotenv/config";
+
 import express from "express";
 import cors from 'cors';
 import { router } from './routes';
-// import "dotenv/config";
-import { SupermarketListingController } from "./controllers/SupermarketListingController";
+import { logRequests } from "./middleware/logRequests";
 
+// Express Configuration
 const app = express();
-
 const APP_PORT = process.env.PORT;
 
+// Enable all origins
 app.use(cors());
 
 app.use(express.json());
-
+app.use(logRequests);
 app.use(router);
-
-app.use((req, res, next) => {
-    console.log(`[${Date.now()}] ${req.method} ${req.path}`);
-    next();
-})
-
 
 // Database Configuration
 import mongoose from 'mongoose';
